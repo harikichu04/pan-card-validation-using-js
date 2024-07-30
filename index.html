@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAN Card Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>PAN Card Verification</h1>
+    <input type="text" id="pan" placeholder="Enter PAN Number">
+    <button onclick="verifyPAN()">Verify</button>
+    <div id="message" class="message"></div>
+</div>
+
+<script>
+    function verifyPAN() {
+        const pan = document.getElementById('pan').value.toUpperCase();
+        const message = document.getElementById('message');
+        const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+
+        if (panRegex.test(pan)) {
+            message.textContent = "PAN number is valid.";
+            message.style.color = "green";
+        } else {
+            message.textContent = "Invalid PAN number. Please enter a valid PAN.";
+            message.style.color = "red";
+        }
+    }
+</script>
+
+</body>
+</html>
